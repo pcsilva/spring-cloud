@@ -1,0 +1,47 @@
+version: "3.7"
+
+x-default-opts: 
+  &default-opts
+  networks:
+    - proxy
+  logging:
+    options:
+      max-size: "1m"
+
+services:
+
+  app-jax-rs:
+    <<: *default-opts
+    image: localhost:5000/app-jax-rs 
+    environment:
+      - JAVA_OPTS_APPEND=-Xms1G -Xmx1G
+      - AMBIENTE=${AMBIENTE}
+      - IBGE_API=${IBGE_API}
+      - TZ=America/Sao_Paulo
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2048M
+        reservations:
+          cpus: '1'
+          memory: 2048M
+      labels:
+        - traefik.frontend.rule=Host:app-jax-rs.${CURRENT_DOCKER_DOMAIN}
+        - traefik.enable=true
+        - traefik.port=8080
+        - traefik.docker.network=proxy
+        - traefik.redirectorservice.frontend.entryPoints=http
+        - traefik.redirectorservice.frontend.redirect.entryPoint=https
+        - traefik.webservice.frontend.entryPoints=https
+
+
+networks:
+  proxy:
+    external: true

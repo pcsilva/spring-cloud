@@ -1,0 +1,12 @@
+/opt/iplanrio/projetos/fontes/Evoluum/app-spring-cloud/app/src/main/java/com/pcsilva/api/representation/RegiaoRepresentation.java
+/opt/iplanrio/projetos/fontes/Evoluum/app-spring-cloud/app/src/main/java/com/pcsilva/api/exception/ResourceNotFoundException.java
+/opt/iplanrio/projetos/fontes/Evoluum/app-spring-cloud/app/src/main/java/com/pcsilva/api/infra/RibbonConfiguration.java
+/opt/iplanrio/projetos/fontes/Evoluum/app-spring-cloud/app/src/main/java/com/pcsilva/api/representation/MesoRegiaoRepresentation.java
+/opt/iplanrio/projetos/fontes/Evoluum/app-spring-cloud/app/src/main/java/com/pcsilva/api/representation/LocalidadesRepresentation.java
+/opt/iplanrio/projetos/fontes/Evoluum/app-spring-cloud/app/src/main/java/com/pcsilva/api/RestApplication.java
+/opt/iplanrio/projetos/fontes/Evoluum/app-spring-cloud/app/src/main/java/com/pcsilva/api/service/IBGEServiceDelegate.java
+/opt/iplanrio/projetos/fontes/Evoluum/app-spring-cloud/app/src/main/java/com/pcsilva/api/rest/IBGEController.java
+/opt/iplanrio/projetos/fontes/Evoluum/app-spring-cloud/app/src/main/java/com/pcsilva/api/representation/MicrorRegiaoRepresentation.java
+/opt/iplanrio/projetos/fontes/Evoluum/app-spring-cloud/app/src/main/java/com/pcsilva/api/representation/MunicipioRepresentation.java
+/opt/iplanrio/projetos/fontes/Evoluum/app-spring-cloud/app/src/main/java/com/pcsilva/api/representation/EstadoRepresentation.java
+/opt/iplanrio/projetos/fontes/Evoluum/app-spring-cloud/app/src/main/java/com/pcsilva/api/gateway/IBGEClient.java

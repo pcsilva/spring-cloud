@@ -1,0 +1,21 @@
+info:
+  component: Eureka
+server:
+  port: 8761
+spring:
+  application:
+    name: eureka
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  instance:
+    hostname: 127.0.0.1
+    leaseRenewalIntervalInSeconds: 10
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  dashboard:
+    path: /dashboard
+
+
+

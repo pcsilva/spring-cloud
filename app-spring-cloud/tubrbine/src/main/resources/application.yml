@@ -1,0 +1,35 @@
+info:
+  component: Turbine
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+server:
+  port: 8989
+logging:
+  level:
+    root: INFO
+    com.netflix.turbine: 'TRACE'
+    com.netflix.discovery: 'OFF'
+spring:
+  application:
+    name: ibge-turbine
+eureka:
+  instance:
+    leaseExpirationDurationInSeconds: 5
+    leaseRenewalIntervalInSeconds: 5
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+turbine:
+  appConfig: ibge-service
+  cluster-name-expression: metadata['cluster']
+  aggregator:
+    clusterConfig: IBGE-SERVICE
+    # http://localhost:8989/turbine.stream?cluster=IBGE-SERVICE
+    instanceUrlSuffix:
+      IBGE-SERVICE: :8080/hystrix.stream
+  combineHostPort: true
+InstanceDiscovery:
+  impl: io.spring.platform.netflix.turbine.EurekaInstanceDiscovery

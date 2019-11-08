@@ -1,0 +1,12 @@
+com/pcsilva/api/rest/IBGEController.class
+com/pcsilva/api/representation/MesoRegiaoRepresentation.class
+com/pcsilva/api/representation/MicrorRegiaoRepresentation.class
+com/pcsilva/api/gateway/IBGEClient.class
+com/pcsilva/api/exception/ResourceNotFoundException.class
+com/pcsilva/api/RestApplication.class
+com/pcsilva/api/representation/LocalidadesRepresentation.class
+com/pcsilva/api/infra/RibbonConfiguration.class
+com/pcsilva/api/representation/RegiaoRepresentation.class
+com/pcsilva/api/service/IBGEServiceDelegate.class
+com/pcsilva/api/representation/EstadoRepresentation.class
+com/pcsilva/api/representation/MunicipioRepresentation.class

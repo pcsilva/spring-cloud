@@ -1,0 +1,25 @@
+version: "3.7"
+
+x-default-opts: 
+  &default-opts
+  networks:
+    - proxy
+  logging:
+    options:
+      max-size: "100m"
+  restart: unless-stopped
+
+services:
+
+  app-jax-rs:
+    <<: *default-opts
+    container_name: "app-jax-rs"
+    build: .
+    ports:
+      - 8080:8080
+      - 9990:9990
+      - 8787:8787
+
+networks:
+  proxy:
+
