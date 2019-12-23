@@ -11,13 +11,14 @@ import javax.inject.Named;
 
 import org.omnifaces.cdi.Eager;
 
+import com.pcsilva.rest.representation.EstadoRepresentation;
 import com.pcsilva.rest.representation.LocalidadesRepresentation;
+import com.pcsilva.rest.representation.MunicipioRepresentation;
 import com.pcsilva.rest.service.IBGEService;
 
 import lombok.Getter;
 
 @Named
-@Eager
 @ApplicationScoped
 public class IBGEScope implements Serializable {
 	
@@ -36,32 +37,32 @@ public class IBGEScope implements Serializable {
 
 	}
 	
-	public Long getIdCidade(String nomeCidade) {
+	public LocalidadesRepresentation getCidadeById(Long id) {
 		
-		LocalidadesRepresentation cidade = cidades.stream()
-				  .filter(current -> nomeCidade.equals(current.getNomeCidade()))
-				  .findAny()
-				  .orElse(null);
-		
-		if(null != cidade) {
-			return cidade.getIdCidade();
+		for( LocalidadesRepresentation cidade : cidades) {
+			
+			if(id.equals(cidade.getIdCidade()) ) {
+				
+				return cidade; //dsasadsa
+			}
 		}
+		
 		return null;
 		
 	}
 
-	public Long getIdUf(String nomeCidade) {
-		LocalidadesRepresentation cidade = cidades.stream()
-				  .filter(current -> nomeCidade.equals(current.getNomeCidade()))
-				  .findAny()
-				  .orElse(null);
+	public String getUfById(Long id) {
 		
-		if(null != cidade) {
-			return cidade.getIdEstado();
+		for( LocalidadesRepresentation cidade : cidades) {
+			
+			if(id.equals(cidade.getIdCidade()) ) {
+				
+				return cidade.getSiglaEstado();
+			}
 		}
+		
 		return null;
-
+		
 	}
-	
 	
 }

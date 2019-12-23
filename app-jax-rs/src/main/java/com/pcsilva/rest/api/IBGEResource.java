@@ -24,6 +24,9 @@ import com.pcsilva.rest.exception.ServicoIndisponivelException;
 import com.pcsilva.rest.infra.IBGEScope;
 import com.pcsilva.rest.representation.LocalidadesRepresentation;
 
+import javax.ws.rs.core.Response.Status;
+
+
 @Path("/v1")
 public class IBGEResource {
 
@@ -31,13 +34,22 @@ public class IBGEResource {
 	private IBGEScope ibgeScope;
 
 	@GET
-	@Path("/cidade/{nome}")
+	@Path("/cidade/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response listarIdCidadePorNomeCidade(@PathParam("nome") String nomeCidade) {
+	public Response listarIdCidadePorNomeCidade(@PathParam("id") Long id) {
 
 		try {
 
-			return Response.ok(new ModelMapper().map(ibgeScope.getIdCidade(nomeCidade), new TypeToken<Long>() {}.getType())).build();
+			
+			LocalidadesRepresentation cidade = ibgeScope.getCidadeById(id);
+			
+			if(null == cidade) {
+				
+				return Response.status(Status.NO_CONTENT).entity("{}").build();
+				
+			}
+			
+			return Response.ok(new ModelMapper().map(cidade, LocalidadesRepresentation.class)).build();
 
 		} catch (ServicoIndisponivelException e) {
 
@@ -48,19 +60,29 @@ public class IBGEResource {
 	}
 
 	@GET
-	@Path("/uf/{nome}")
+	@Path("/uf/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response listarIdUfPorNomeCidade(@PathParam("nome") String nomeCidade) {
+	public Response listarIdUfPorNomeCidade(@PathParam("id") Long id) {
+
 
 		try {
 
-			return Response.ok(new ModelMapper().map(ibgeScope.getIdUf(nomeCidade), new TypeToken<Long>() {}.getType())).build();
+			
+			String uf = ibgeScope.getUfById(id);
+			
+			if(null == uf) {
+				
+				return Response.status(Status.NO_CONTENT).entity("''").build();
+				
+			}
+			
+			return Response.ok(new ModelMapper().map(uf, String.class)).build();
 
 		} catch (ServicoIndisponivelException e) {
 
 			return Response.ok(e.getMessage()).build();
 
-		}
+		}	
 
 	}
 	
